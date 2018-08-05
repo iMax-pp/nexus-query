@@ -1,0 +1,19 @@
+{
+  "Nexus" : {
+    "url": "http://localhost:8081/nexus"
+  },
+  "Artifacts": [
+    {
+      "name": "Test",
+      "groupId": "fr.imaxpp",
+      "artifactId": "test-nexus",
+      "extension": "war"
+    },
+    {
+      "name": "Inexistant",
+      "groupId": "fr.imaxpp",
+      "artifactId": "test-inexistant",
+      "extension": "ear"
+    }
+  ]
+}
