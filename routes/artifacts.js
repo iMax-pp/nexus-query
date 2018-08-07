@@ -17,7 +17,7 @@ router.addRoute = function addRoute(artifact) {
   router.get(`/${artifact.artifactId}-${artifact.extension}`, (req, res) => {
     res.render('artifact', {
       title: artifact.name,
-      current: artifact.artifactId,
+      current: `${artifact.artifactId}-${artifact.extension}`,
       artifacts: config.artifacts(),
       elmts: nexus.query(artifact.groupId, artifact.artifactId, artifact.extension),
     });
