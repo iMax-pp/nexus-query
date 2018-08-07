@@ -7,9 +7,13 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.10/js/uikit-icons.min.js')
   body
     nav(uk-navbar).uk-navbar-container
-      div.uk-navbar-left
+      .uk-navbar-left
         ul.uk-navbar-nav
           each art in artifacts
             li(class= art.artifactId === current ? "uk-active" : "")
-              a(href="/" + art.artifactId) #{art.name}
+              a(href="/artifact/" + art.artifactId) #{art.name}
+      .uk-navbar-right
+        ul.uk-navbar-nav
+          li
+            a(href="/config") Configuration
     block content

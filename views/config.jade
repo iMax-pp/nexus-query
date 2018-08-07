@@ -1,0 +1,40 @@
+extends layout
+block content
+  .uk-section.uk-section-small.uk-section-primary
+    .uk-container
+        h4 Add new Artifact
+        form(action="/config" method="post")
+          .uk-grid.uk-grid-small
+            span
+              input.uk-input(type="text" name="name" placeholder="name")
+            span
+              input.uk-input(type="text" name="groupId" placeholder="groupId")
+            span
+              input.uk-input(type="text" name="artifactId" placeholder="artifactId")
+            span
+              input.uk-input(type="text" name="extension" placeholder="extension")
+            span
+              button.uk-button.uk-button-link(type="submit")
+                span.uk-icon-button.uk-button-primary(uk-icon="plus")
+  .uk-section.uk-section-xsmall
+    .uk-container
+        h4 Manage existing Artifacts
+        table.uk-table.uk-table-striped
+          thead
+            tr
+              th name
+              th groupId
+              th artifactId
+              th extension
+              th.uk-table-shrink
+          tbody
+            each art in artifacts
+              tr
+                td #{art.name}
+                td #{art.groupId}
+                td #{art.artifactId}
+                td #{art.extension}
+                td
+                  form(action="/config/delete/#{art.id}" method="post")
+                    button.uk-button.uk-button-link(type="submit")
+                      span.uk-icon-button.uk-button-danger(uk-icon="trash")
