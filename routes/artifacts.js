@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.addRoute = function addRoute(artifact) {
-  router.get(`/${artifact.artifactId}`, (req, res) => {
+  router.get(`/${artifact.artifactId}-${artifact.extension}`, (req, res) => {
     res.render('artifact', {
       title: artifact.name,
       current: artifact.artifactId,
