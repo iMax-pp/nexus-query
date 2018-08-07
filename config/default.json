@@ -1,6 +1,6 @@
 {
-  "Nexus" : {
-    "url": "http://localhost:8081/nexus"
+  "nexus" : {
+    "url": "NEXUS_URL"
   },
   "Artifacts": [
     {

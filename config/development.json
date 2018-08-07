@@ -1,0 +1,5 @@
+{
+  "nexus": {
+    "url": "http://localhost:8081/nexus"
+  }
+}

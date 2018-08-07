@@ -1,6 +1,6 @@
 const request = require('request-promise-native');
 const xml2js = require('xml2js-es6-promise');
-const nexusUrl = require('config').get('Nexus.url');
+const nexusUrl = require('config').get('nexus.url');
 
 function parseNexusResponse(response, extension) {
   if (response.searchNGResponse.data[0] === '') {
