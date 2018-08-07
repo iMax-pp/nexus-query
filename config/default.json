@@ -1,19 +1,5 @@
 {
-  "nexus" : {
+  "nexus": {
     "url": "NEXUS_URL"
-  },
-  "Artifacts": [
-    {
-      "name": "Test",
-      "groupId": "fr.imaxpp",
-      "artifactId": "test-nexus",
-      "extension": "war"
-    },
-    {
-      "name": "Inexistant",
-      "groupId": "fr.imaxpp",
-      "artifactId": "test-inexistant",
-      "extension": "ear"
-    }
-  ]
+  }
 }

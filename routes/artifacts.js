@@ -1,27 +1,30 @@
 const express = require('express');
-const artifacts = require('config').get('Artifacts');
 const nexus = require('../services/nexus');
 
 const router = express.Router();
+let config;
 
 router.get('/', (req, res) => {
   res.render('artifact', {
     title: 'Home',
     current: '',
-    artifacts,
+    artifacts: config.artifacts(),
     elmts: [],
   });
 });
 
-artifacts.forEach((art) => {
-  router.get(`/${art.artifactId}`, (req, res) => {
+router.addRoute = function addRoute(artifact) {
+  router.get(`/${artifact.artifactId}`, (req, res) => {
     res.render('artifact', {
-      title: art.name,
-      current: art.artifactId,
-      artifacts,
-      elmts: nexus.query(art.groupId, art.artifactId, art.extension),
+      title: artifact.name,
+      current: artifact.artifactId,
+      artifacts: config.artifacts(),
+      elmts: nexus.query(artifact.groupId, artifact.artifactId, artifact.extension),
     });
   });
-});
+};
 
-module.exports = router;
+module.exports = function initialize(cfg) {
+  config = cfg;
+  return router;
+};

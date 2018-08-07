@@ -5,8 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const expressPromise = require('express-promise');
 
-const artifacts = require('config').get('Artifacts');
-const artifactsRouter = require('./routes/artifacts');
+const cfg = require('./services/config');
+const artifactsRouter = require('./routes/artifacts')(cfg);
+
+cfg.setRouter(artifactsRouter);
+cfg.addArtifact('Test', 'fr.imaxpp', 'test-nexus', 'war');
+cfg.addArtifact('Inexistant', 'fr.imaxpp', 'test-inexistant', 'ear');
 
 const app = express();
 
@@ -39,7 +43,7 @@ app.use((err, req, res) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', { title: 'Error', artifacts });
+  res.render('error', { title: 'Error', artifacts: cfg.artifacts() });
 });
 
 module.exports = app;
