@@ -1,4 +1,4 @@
-const artifacts = [];
+const artifacts = new Map();
 
 module.exports = {
   router: {},
@@ -7,7 +7,7 @@ module.exports = {
   },
 
   artifacts: function getArtifacts() {
-    return artifacts;
+    return Array.from(artifacts.values());
   },
 
   addArtifact: function addArtifact(name, groupId, artifactId, extension) {
@@ -17,7 +17,10 @@ module.exports = {
       artifactId,
       extension,
     };
-    artifacts.push(artifact);
+    artifacts.set(`${groupId}:${artifactId}:${extension}`, artifact);
     this.router.addRoute(artifact);
+  },
+  deleteArtifact: function deleteArtifact(id) {
+    artifacts.delete(id);
   },
 };

@@ -15,6 +15,11 @@ router.post('/', (req, res) => {
   res.redirect('/config');
 });
 
+router.post('/delete/:id', (req, res) => {
+  config.deleteArtifact(req.param('id'));
+  res.redirect('/config');
+});
+
 module.exports = function initialize(cfg) {
   config = cfg;
   return router;

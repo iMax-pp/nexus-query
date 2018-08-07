@@ -10,8 +10,6 @@ const artifactsRouter = require('./routes/artifacts')(cfg);
 const configRouter = require('./routes/config')(cfg);
 
 cfg.setRouter(artifactsRouter);
-cfg.addArtifact('Test', 'fr.imaxpp', 'test-nexus', 'war');
-cfg.addArtifact('Inexistant', 'fr.imaxpp', 'test-inexistant', 'ear');
 
 const app = express();
 
