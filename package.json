@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "NODE_ENV=development ./node_modules/.bin/nodemon --inspect ./bin/www",
+    "lint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
     "config": "^2.0.1",
@@ -26,6 +28,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0"
+    "eslint-plugin-standard": "^3.1.0",
+    "nodemon": "^1.18.3"
   }
 }

@@ -17,6 +17,6 @@ To launch the application in development mode:
 - if necessary, change the Nexus URL in file `config/development.json`
 - run it: `NODE_ENV=development npm start`
 
-For hot-reload of modifications, `nodemon` can be used:
-- install it: `npm install -g nodemon`
-- run the web application using it: `NODE_ENV=development nodemon --inspect ./bin/www`
+For hot-reload of modifications, `nodemon` can be used: `npm run dev`
+
+Code lint is also available, using ESLint: `npm run lint`
