@@ -29,7 +29,7 @@ app.use('/favicon.ico', express.static(path.join(__dirname, 'public', 'images', 
 
 app.use('/artifact', artifactsRouter);
 app.use('/config', configRouter);
-app.use('/', (req, res) => res.redirect('/artifact'));
+app.get('/', (req, res) => res.redirect('/artifact'));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
