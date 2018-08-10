@@ -12,23 +12,23 @@ function parseNexusResponse(response, extension) {
     const artifactId = elmt.artifactId[0];
     const version = elmt.version[0];
     return request(`${nexusUrl}/service/local/artifact/maven/resolve?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`)
-      .then(body => xml2js(body)
-        .then(xml => ({
-          repositoryId,
-          groupId,
-          artifactId,
-          version,
-          timestamp: xml['artifact-resolution'].data[0].snapshotTimeStamp[0],
-          extension,
-          url: `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`,
-        })));
+      .then(body => xml2js(body))
+      .then(xml => ({
+        repositoryId,
+        groupId,
+        artifactId,
+        version,
+        timestamp: xml['artifact-resolution'].data[0].snapshotTimeStamp[0],
+        extension,
+        url: `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`,
+      }));
   }));
 }
 
 module.exports = {
   query: function query(group, artifact, extension) {
     return request(`${nexusUrl}/service/local/lucene/search?g=${group}&a=${artifact}&p=${extension}`)
-      .then(body => xml2js(body)
-        .then(xml => parseNexusResponse(xml, extension)));
+      .then(body => xml2js(body))
+      .then(xml => parseNexusResponse(xml, extension));
   },
 };

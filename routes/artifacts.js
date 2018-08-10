@@ -14,13 +14,15 @@ router.get('/', (req, res) => {
 });
 
 router.addRoute = function addRoute(artifact) {
-  router.get(`/${artifact.artifactId}-${artifact.extension}`, (req, res) => {
-    res.render('artifact', {
-      title: artifact.name,
-      current: `${artifact.artifactId}-${artifact.extension}`,
-      artifacts: config.artifacts(),
-      elmts: nexus.query(artifact.groupId, artifact.artifactId, artifact.extension),
-    });
+  router.get(`/${artifact.artifactId}-${artifact.extension}`, (req, res, next) => {
+    nexus.query(artifact.groupId, artifact.artifactId, artifact.extension)
+      .then(elmts => res.render('artifact', {
+        title: artifact.name,
+        current: `${artifact.artifactId}-${artifact.extension}`,
+        artifacts: config.artifacts(),
+        elmts,
+      }))
+      .catch(next);
   });
 };
 
