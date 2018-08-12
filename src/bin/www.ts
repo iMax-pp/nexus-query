@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('nexus-query:server');
-var http = require('http');
+import app from '../app';
+import * as debug from 'debug';
+import * as http from 'http';
 
 /**
  * Get port from environment and store in Express.
@@ -86,5 +86,5 @@ function onListening() {
   var bind = typeof addr === 'string' ?
     'pipe ' + addr :
     'port ' + addr.port;
-  debug('Listening on ' + bind);
+  debug('nexus-query:server')('Listening on ' + bind);
 }

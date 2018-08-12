@@ -5,7 +5,8 @@ ENV NODE_ENV production
 
 COPY . /home/node/nexus-query
 WORKDIR /home/node/nexus-query
-RUN npm install
+RUN npm install && \
+    npm run build
 
 EXPOSE 3000
 CMD ["npm", "start"]
