@@ -12,11 +12,10 @@ The web application listens on port `3000`.
 The `NEXUS_URL` environment variable is required to define which Nexus repository to address.
 
 ## Development
-To launch the application in development mode:
+To launch the application in development mode (hot-reloaded using `nodemon` and `ts-node`):
 - install Node dependencies: `npm install`
+- compile TypeScript source: `npm run build`
 - if necessary, change the Nexus URL in file `config/development.json`
-- run it: `NODE_ENV=development npm start`
+- run it: `npm run dev`
 
-For hot-reload of modifications, `nodemon` can be used: `npm run dev`
-
-Code lint is also available, using ESLint: `npm run lint`
+Code lint is available using ESLint: `npm run lint`
