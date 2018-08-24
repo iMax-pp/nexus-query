@@ -35,7 +35,7 @@ block content
                       a.uk-icon-button(href=elmt.url uk-icon='icon: download; ratio: 1.5')
                     td #{elmt.version}
                     if elmt.timestamp != 0
-                      td #{moment(elmt.timestamp).format('YYYY/MM/DD HH:mm')}
+                      td #{moment(elmt.timestamp, 'x').format('YYYY/MM/DD HH:mm')}
                     else
                       td
                     td #{elmt.repositoryId}
