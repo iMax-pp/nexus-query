@@ -3,7 +3,7 @@ export interface Element {
   groupId: string,
   artifactId: string,
   version: string,
-  timestamp: string,
+  timestamp: number,
   extension: string,
   url: string,
 }

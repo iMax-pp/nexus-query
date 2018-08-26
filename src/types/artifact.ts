@@ -1,6 +1,6 @@
 export interface Artifact {
-  name,
-  groupId,
-  artifactId,
-  extension,
+  name: string,
+  groupId: string,
+  artifactId: string,
+  extension: string,
 };

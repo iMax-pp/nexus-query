@@ -2,6 +2,7 @@ import * as express from 'express';
 import { Request, Response, NextFunction } from 'express';
 import nexus from '../services/nexus';
 import { Config } from '../services/app-config';
+import { Artifact } from '../types/artifact';
 
 export default class ArtifactsRouter {
   private config: Config;
@@ -23,7 +24,7 @@ export default class ArtifactsRouter {
     });
   }
 
-  addRoute(artifact) {
+  addRoute(artifact: Artifact) {
     this._router.get(`/${artifact.artifactId}-${artifact.extension}`, async (req: Request, res: Response, next: NextFunction) => {
       try {
         let elmts = await nexus.query(artifact.groupId, artifact.artifactId, artifact.extension)

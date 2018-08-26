@@ -32,7 +32,7 @@ class App {
     this._express.locals.moment = require('moment');
 
     // middlewares setup
-    this._express.use(logger('dev'));
+    this._express.use(logger('combined'));
     this._express.use(express.json());
     this._express.use(express.urlencoded({ extended: false }));
     this._express.use(cookieParser());

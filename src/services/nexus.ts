@@ -40,7 +40,7 @@ class Nexus {
         groupId,
         artifactId,
         version,
-        timestamp: xml['artifact-resolution'].data[0].snapshotTimeStamp[0],
+        timestamp: Number(xml['artifact-resolution'].data[0].snapshotTimeStamp[0]),
         extension,
         url: `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`,
       };

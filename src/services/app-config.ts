@@ -1,7 +1,7 @@
 import { Artifact } from '../types/artifact';
 
 export class Config {
-  private static artifacts = new Map<String, Artifact>();
+  private static artifacts = new Map<string, Artifact>();
   get artifacts(): Array<Artifact> {
     return Array.from(Config.artifacts.values());
   }
@@ -11,7 +11,7 @@ export class Config {
     this._router = r;
   }
 
-  addArtifact(name: String, groupId: String, artifactId: String, extension: String) {
+  addArtifact(name: string, groupId: string, artifactId: string, extension: string) {
     let id = `${groupId}:${artifactId}:${extension}`;
     let artifact = {
       name,
@@ -23,7 +23,7 @@ export class Config {
     this._router.addRoute(artifact);
   }
 
-  deleteArtifact(id: String) {
+  deleteArtifact(id: string) {
     Config.artifacts.delete(id);
   }
 }
