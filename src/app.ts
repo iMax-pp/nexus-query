@@ -21,6 +21,7 @@ class App {
   constructor() {
     this._express = express();
     cfg.router = this.artifactsRouter;
+    cfg.initFromDb();
     this.initMiddlewares();
     this.initRoutes();
   }

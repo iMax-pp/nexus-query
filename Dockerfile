@@ -4,6 +4,7 @@ COPY . /home/node/nexus-query
 WORKDIR /home/node/nexus-query
 RUN npm install && \
     npm run build && \
+    mkdir data && \
     chown -R node: *
 
 USER node
