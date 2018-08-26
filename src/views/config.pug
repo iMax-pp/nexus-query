@@ -35,6 +35,6 @@ block content
                 td #{art.artifactId}
                 td #{art.extension}
                 td
-                  form(action="/config/delete/#{art.groupId}:#{art.artifactId}:#{art.extension}" method="post")
+                  form(action=`/config/delete/${art.groupId}:${art.artifactId}:${art.extension}` method="post")
                     button.uk-button.uk-button-link(type="submit")
                       span.uk-icon-button.uk-button-danger(uk-icon="trash")

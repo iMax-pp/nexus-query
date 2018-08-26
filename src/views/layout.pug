@@ -10,8 +10,8 @@ html
       .uk-navbar-left
         ul.uk-navbar-nav
           each art in artifacts
-            li(class= "#{art.artifactId}-#{art.extension}" === current ? "uk-active" : "")
-              a(href="/artifact/#{art.artifactId}-#{art.extension}") #{art.name}
+            li(class= `${art.artifactId}-${art.extension}` === current ? "uk-active" : "")
+              a(href=`/artifact/${art.artifactId}-${art.extension}`) #{art.name}
       .uk-navbar-right
         ul.uk-navbar-nav
           li

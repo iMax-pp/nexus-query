@@ -28,7 +28,7 @@ class App {
   private initMiddlewares() {
     // view engine setup
     this._express.set('views', join(__dirname, 'views'));
-    this._express.set('view engine', 'jade');
+    this._express.set('view engine', 'pug');
     this._express.locals.moment = require('moment');
 
     // middlewares setup
