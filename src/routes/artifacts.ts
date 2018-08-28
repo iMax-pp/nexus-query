@@ -25,12 +25,12 @@ export default class ArtifactsRouter {
   }
 
   addRoute(art: Artifact) {
-    this._router.get(`/${art.groupId}:${art.artifactId}:${art.extension}`, async (req: Request, res: Response, next: NextFunction) => {
+    this._router.get(`/${art.groupId}.${art.artifactId}.${art.extension}`, async (req: Request, res: Response, next: NextFunction) => {
       try {
         let elmts = await nexus.query(art.groupId, art.artifactId, art.extension)
         res.render('artifact', {
           title: art.name,
-          current: `${art.groupId}:${art.artifactId}:${art.extension}`,
+          current: `${art.groupId}.${art.artifactId}.${art.extension}`,
           artifacts: this.config.artifacts,
           elmts,
         });

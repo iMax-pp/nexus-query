@@ -27,7 +27,7 @@ export class Config {
   }
 
   addArtifact(name: string, groupId: string, artifactId: string, extension: string) {
-    let id = `${groupId}:${artifactId}:${extension}`;
+    let id = `${groupId}.${artifactId}.${extension}`;
     let artifact = {
       name,
       groupId,

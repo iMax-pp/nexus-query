@@ -1,4 +1,4 @@
 .vscode/
-data/
+data/artifacts.db
 dist/
 node_modules/

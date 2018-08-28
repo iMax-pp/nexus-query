@@ -3,11 +3,8 @@ FROM node:10
 COPY . /home/node/nexus-query
 WORKDIR /home/node/nexus-query
 RUN npm install && \
-    npm run build && \
-    mkdir data && \
-    chown -R node: *
+    npm run build
 
-USER node
 ENV NODE_ENV production
 EXPOSE 3000
 CMD ["npm", "start"]
