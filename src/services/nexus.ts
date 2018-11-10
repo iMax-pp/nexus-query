@@ -33,16 +33,16 @@ class Nexus {
       let groupId = elmt.groupId[0];
       let artifactId = elmt.artifactId[0];
       let version = elmt.version[0];
-      let body = await request(`${nexusUrl}/service/local/artifact/maven/resolve?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`)
-      let xml = await xml2js(body);
+      let url = `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`
+      let headers = await request.head(url)
       return {
         repositoryId,
         groupId,
         artifactId,
         version,
-        timestamp: Number(xml['artifact-resolution'].data[0].snapshotTimeStamp[0]),
+        timestamp: new Date(headers['last-modified']).getTime(),
         extension,
-        url: `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`,
+        url,
       };
     }));
   }
