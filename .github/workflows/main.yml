@@ -4,13 +4,10 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: Install Node.js
-      run: apt install nodejs
+    - uses: actions/setup-node@v1.1.0
     - name: Retrieve dependencies
       run: npm install
     - name: Lint project
