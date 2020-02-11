@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Node.js
+      run: apt install nodejs
+    - name: Retrieve dependencies
+      run: npm install
+    - name: Lint project
+      run: npm run lint
+    - name: Build project
+      run: npm run build
