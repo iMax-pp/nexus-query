@@ -27,7 +27,7 @@ export default class ConfigRouter {
       res.redirect('/config');
     });
 
-    this._router.post('/delete/:id', (req: Request, res: Response) => {
+    this._router.delete('/:id', (req: Request, res: Response) => {
       this.config.deleteArtifact(req.params.id);
       res.redirect('/config');
     });
