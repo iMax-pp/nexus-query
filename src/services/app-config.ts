@@ -1,4 +1,5 @@
 import { Artifact } from '../types/artifact';
+import ArtifactsRouter from '../routes/artifacts';
 import * as fs from 'fs';
 
 const DB_FILE = 'data/artifacts.db';
@@ -9,8 +10,8 @@ export class Config {
     return Array.from(Config.artifacts.values());
   }
 
-  private _router;
-  set router(r) {
+  private _router: ArtifactsRouter;
+  set router(r: ArtifactsRouter) {
     this._router = r;
   }
 
