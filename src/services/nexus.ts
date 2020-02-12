@@ -17,9 +17,9 @@ function xml2js(xml: string): Promise<any> {
 
 class Nexus {
 
-  async query(group: string, artifact: string, extension: string) {
-    let body = await request(`${nexusUrl}/service/local/lucene/search?g=${group}&a=${artifact}&p=${extension}`);
-    let xml = await xml2js(body);
+  async query(group: string, artifact: string, extension: string): Promise<Element[]> {
+    const body = await request(`${nexusUrl}/service/local/lucene/search?g=${group}&a=${artifact}&p=${extension}`);
+    const xml = await xml2js(body);
     return this.parseNexusResponse(xml, extension);
   }
 
@@ -29,12 +29,12 @@ class Nexus {
     }
 
     return Promise.all<Element>(response.searchNGResponse.data[0].artifact.map(async (elmt) => {
-      let repositoryId = elmt.artifactHits[0].artifactHit[0].repositoryId[0];
-      let groupId = elmt.groupId[0];
-      let artifactId = elmt.artifactId[0];
-      let version = elmt.version[0];
-      let url = `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`
-      let headers = await request.head(url)
+      const repositoryId = elmt.artifactHits[0].artifactHit[0].repositoryId[0];
+      const groupId = elmt.groupId[0];
+      const artifactId = elmt.artifactId[0];
+      const version = elmt.version[0];
+      const url = `${nexusUrl}/service/local/artifact/maven/content?r=${repositoryId}&g=${groupId}&a=${artifactId}&p=${extension}&v=${version}`
+      const headers = await request.head(url)
       return {
         repositoryId,
         groupId,

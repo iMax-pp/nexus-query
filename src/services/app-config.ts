@@ -14,7 +14,7 @@ export class Config {
     this._router = r;
   }
 
-  initFromDb() {
+  initFromDb(): void {
     fs.readFile(DB_FILE, 'utf8', (err, data) => {
       if (err) {
         console.log(err.message);
@@ -26,9 +26,9 @@ export class Config {
     });
   }
 
-  addArtifact(name: string, groupId: string, artifactId: string, extension: string) {
-    let id = `${groupId}.${artifactId}.${extension}`;
-    let artifact = {
+  addArtifact(name: string, groupId: string, artifactId: string, extension: string): void {
+    const id = `${groupId}.${artifactId}.${extension}`;
+    const artifact = {
       name,
       groupId,
       artifactId,
@@ -41,7 +41,7 @@ export class Config {
     this._router.addRoute(artifact);
   }
 
-  deleteArtifact(id: string) {
+  deleteArtifact(id: string): void {
     Config.artifacts.delete(id);
     fs.writeFile(DB_FILE, JSON.stringify([...Config.artifacts]), err => {
       if (err) throw err;

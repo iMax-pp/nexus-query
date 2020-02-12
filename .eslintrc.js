@@ -1,16 +1,24 @@
 module.exports = {
-    "extends": "airbnb-base",
-    "env": {
-        "node": true
+    extends: 'airbnb-base',
+    env: {
+        node: true
     },
-    "parser": "typescript-eslint-parser",
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "modules": true
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
+        sourceType: 'module',
+        ecmaFeatures: {
+            modules: true
         }
     },
-    "rules": {
-        "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
+    plugins: [
+        '@typescript-eslint',
+    ],
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+    ],
+    rules: {
+        'no-unused-vars': ['error', { argsIgnorePattern: 'next' }]
     },
 };

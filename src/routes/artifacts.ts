@@ -7,7 +7,7 @@ import { Artifact } from '../types/artifact';
 export default class ArtifactsRouter {
   private config: Config;
   private _router = express.Router();
-  get router() {
+  get router(): express.Router {
     return this._router;
   }
 
@@ -24,10 +24,10 @@ export default class ArtifactsRouter {
     });
   }
 
-  addRoute(art: Artifact) {
+  addRoute(art: Artifact): void {
     this._router.get(`/${art.groupId}.${art.artifactId}.${art.extension}`, async (req: Request, res: Response, next: NextFunction) => {
       try {
-        let elmts = await nexus.query(art.groupId, art.artifactId, art.extension)
+        const elmts = await nexus.query(art.groupId, art.artifactId, art.extension)
         res.render('artifact', {
           title: art.name,
           current: `${art.groupId}.${art.artifactId}.${art.extension}`,
@@ -38,5 +38,5 @@ export default class ArtifactsRouter {
         next(err);
       }
     });
-  };
+  }
 }

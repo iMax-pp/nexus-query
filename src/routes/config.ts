@@ -5,7 +5,7 @@ import { Config } from '../services/app-config';
 export default class ConfigRouter {
   private config: Config;
   private _router = express.Router();
-  get router() {
+  get router(): express.Router {
     return this._router;
   }
 
@@ -14,7 +14,7 @@ export default class ConfigRouter {
     this.initRoutes();
   }
 
-  private initRoutes() {
+  private initRoutes(): void {
     this._router.get('/', (req: Request, res: Response) => {
       res.render('config', {
         title: 'Configuration',

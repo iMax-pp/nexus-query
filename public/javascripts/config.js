@@ -1,8 +1,4 @@
-/* eslint-env browser */
-
 function deleteConfig(groupId, artifactId, extension) {
-  'use strict';
-
   const req = new XMLHttpRequest();
   req.addEventListener('load', () => {
     window.location = req.responseURL;
