@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: push
 
 jobs:
   build:
@@ -10,7 +10,15 @@ jobs:
     - uses: actions/setup-node@v1.1.0
     - name: Retrieve dependencies
       run: npm install
-    - name: Lint project
+    - name: ESLint analysis
       run: npm run lint
-    - name: Build project
+    - name: TS project build
       run: npm run build
+      
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker-practice/actions-setup-docker@0.0.1
+      - name: Build Docker image
+        run: docker build .
