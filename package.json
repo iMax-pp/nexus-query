@@ -10,7 +10,7 @@
     "clean": "rm -r ./dist"
   },
   "dependencies": {
-    "config": "^3.2.5",
+    "config": "^3.3.8",
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
     "express": "^4.17.3",
